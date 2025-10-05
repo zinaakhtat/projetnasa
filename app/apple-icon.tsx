@@ -1,0 +1,40 @@
+import { ImageResponse } from "next/og"
+
+export const runtime = "edge"
+export const size = {
+  width: 180,
+  height: 180,
+}
+export const contentType = "image/png"
+
+export default function AppleIcon() {
+  return new ImageResponse(
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        background: "linear-gradient(135deg, #0891b2 0%, #06b6d4 100%)",
+        borderRadius: "40px",
+      }}
+    >
+      <svg width="120" height="120" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
+          fill="white"
+        />
+        <path
+          d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"
+          fill="white"
+          opacity="0.7"
+        />
+        <circle cx="12" cy="12" r="2" fill="white" />
+      </svg>
+    </div>,
+    {
+      ...size,
+    },
+  )
+}
