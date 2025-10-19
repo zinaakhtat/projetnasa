@@ -62,7 +62,7 @@ Elle fournit des **données en temps réel**, des **prévisions personnalisées*
 - **Frontend** : Next.js, React, TypeScript, Tailwind CSS, Recharts
 - **Outils & Librairies** : React Hook Form, Zod, Date-fns, Sonner, Next Themes
 
-  <br\>
+  <br/>
 
 ## 🚀 Installation & démarrage
 
@@ -106,7 +106,7 @@ git commit -m "Add AmazingFeature"
 ## 📄 Licence
 
 Projet sous licence **MIT**.  
-Voir le fichier [LICENSE](LICENSE) pour plus de détails.
+Voir le fichier [LICENSE](Licence) pour plus de détails.
 
 <br/>
 
