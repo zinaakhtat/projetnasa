@@ -7,7 +7,7 @@
 
 ## 🌍 À propos
 
-Respera est une **application web responsive** développée lors du **48-hour global hackathon — 2025 NASA Space Apps Challenge (Agadir)** pour surveiller la **qualité de l’air au Maroc**.  
+Respera est une **application web ** développée lors du **48-hour global hackathon — 2025 NASA Space Apps Challenge (Agadir)** pour surveiller la **qualité de l’air au Maroc**.  
 Elle fournit des **données en temps réel**, des **prévisions personnalisées** et des **conseils adaptés à la santé des utilisateurs**.
 
 > Certaines parties du code ont été générées avec l’aide de **V0 AI** afin d’accélérer le développement.
