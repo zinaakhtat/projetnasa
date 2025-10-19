@@ -1,30 +1,31 @@
-# 🌬️ Respera - Surveillance de la Qualité de l'Air
+# 🌬️ Respera - Air Quality Monitoring
 
 <p align="center">
   <img src="public/logo.png" alt="Respera Logo" width="180" style="margin-right: 30px;"/>
   <img src="docs/screenshots/nasa.png" alt="Nasa Logo" width="180"/>
 </p>
 
-## 🌍 À propos
+## 🌍 About
 
-Respera est une **application web ** développée lors du **48-hour global hackathon — 2025 NASA Space Apps Challenge (Agadir)** pour surveiller la **qualité de l’air au Maroc**.  
-Elle fournit des **données en temps réel**, des **prévisions personnalisées** et des **conseils adaptés à la santé des utilisateurs**.
+**Respera** is a **web application** developed during the **48-hour Global Hackathon — 2025 NASA Space Apps Challenge (Agadir)** to monitor **air quality in Morocco**.  
+It provides **real-time data**, **personalized forecasts**, and **health-based recommendations** tailored to users.
 
-> Certaines parties du code ont été générées avec l’aide de **V0 AI** afin d’accélérer le développement.
-> <br/>
+> Some parts of the code were generated using **V0 AI** to accelerate development.
+ 
+ <br/>
 
-## ✨ Fonctionnalités principales
+## ✨ Key Features
 
-- **Dashboard en temps réel** : visualisation de l’indice AQI et des principaux polluants.
-- **Prévisions de qualité de l’air** : prévisions horaires pour différentes villes.
-- **Trajets sûrs** : recommandations de trajets alternatifs selon la qualité de l’air.
-- **Chatbot IA** : conseils sur les maladies respiratoires et cardiovasculaires.
-- **Réclamations** : signalement de pollution non détectée.
-- **Profil utilisateur** : gestion des informations personnelles et alertes personnalisées.
+- **Real-time Dashboard**: visualize the AQI index and main pollutants.  
+- **Air Quality Forecasts**: hourly predictions for various cities.  
+- **Safe Routes**: alternative route suggestions based on air quality.  
+- **AI Chatbot**: advice on respiratory and cardiovascular health.  
+- **Reports**: submit untracked pollution incidents.  
+- **User Profile**: manage personal data and receive custom alerts.
 
   <br/>
 
-## 📸 Aperçu de l'application
+## 📸 Application Preview
 
 ### Dashboard
 
@@ -32,19 +33,19 @@ Elle fournit des **données en temps réel**, des **prévisions personnalisées*
   <img src="docs/screenshots/dashboard.png" alt="Dashboard Screenshot" width="600"/>
 </p>
 
-### Previsions
+### Forecasts
 
 <p align="center">
   <img src="docs/screenshots/prevesion2.png" alt="Dashboard Screenshot" width="600"/>
 </p>
 
-### Trajet
+### Routes
 
 <p align="center">
   <img src="docs/screenshots/trajet.png" alt="Dashboard Screenshot" width="600"/>
 </p>
 
-### Reclamation
+### Reports
 
 <p align="center">
   <img src="docs/screenshots/reclamation.png" alt="Dashboard Screenshot" width="600"/>
@@ -57,16 +58,16 @@ Elle fournit des **données en temps réel**, des **prévisions personnalisées*
 </p>
 <br/>
 
-## 🛠️ Technologies utilisées
+## 🛠️ Technologies Used
 
 - **Frontend** : Next.js, React, TypeScript, Tailwind CSS, Recharts
 - **Outils & Librairies** : React Hook Form, Zod, Date-fns, Sonner, Next Themes
 
   <br/>
 
-## 🚀 Installation & démarrage
+## 🚀 Installation & Setup
 
-### 1. Cloner le repository
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/zinaakhtat/projetnasa.git
@@ -77,40 +78,40 @@ npm run dev
 
 <br/>
 
-## 🤝 Contribution
+## 🤝 Contributing
 
-1. **Fork** le repository
+1. **Fork** the repository
 
-2. **Créer une branche** pour votre fonctionnalité
+2. **Create a new branch** for your feature
 
 ```bash
 git checkout -b feature/AmazingFeature
 ```
 
-3. **Committer** vos changements
+3. **Commit** your changes
 
 ```bash
 git commit -m "Add AmazingFeature"
 ```
 
-4. **Pousser** vers la branche
+4. **Push** to the branch
 
 ```bash
 git commit -m "Add AmazingFeature"
 ```
 
-5. **Ouvrir** une Pull Request
+5. **Open** a Pull Request
 
 <br/>
 
 ## 📄 Licence
 
-Projet sous licence **MIT**.  
-Voir le fichier [LICENSE](Licence) pour plus de détails.
+This project is licensed under the MIT License.
+See the LICENSE file for more details.
 
 <br/>
 
 ## 🙏 Remerciements
 
-Merci à **Saâdia Boussiar**, **Hasna Amarmach**, **nohaila el idrissi** et **Hajar Essaidi** pour leur collaboration lors du hackathon.
-à **V0 AI** pour l’assistance dans le développement rapide du projet.
+Special thanks to **Saâdia Boussiar**, **Hasna Amarmach**, **Nohaila El Idrissi**, and **Hajar Essaidi** for their collaboration during the hackathon.
+And to V0 AI for assisting with rapid project development.
