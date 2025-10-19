@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-import { useTranslation } from "react-i18next"
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
@@ -22,7 +21,6 @@ interface ComplaintSubmission {
 }
 
 export default function ComplaintPage() {
-  const { t } = useTranslation()
   const router = useRouter()
   const user = getUser()
   const [location, setLocation] = useState("")
@@ -70,16 +68,16 @@ export default function ComplaintPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-secondary/10 to-background">
-      <main className="container mx-auto px-4 sm:px-6 py-6 sm:py-8 max-w-4xl space-y-4 sm:space-y-6">
+      <main className="container mx-auto px-6 py-8 max-w-4xl space-y-6">
         {/* Header Section */}
-        <div className="space-y-2 sm:space-y-3">
-          <div className="flex items-center gap-2 sm:gap-3">
-            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-destructive to-destructive/70 rounded-xl flex items-center justify-center shadow-lg">
-              <AlertCircle className="w-5 h-5 sm:w-6 sm:h-6 text-destructive-foreground" />
+        <div className="space-y-3">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 bg-gradient-to-br from-destructive to-destructive/70 rounded-xl flex items-center justify-center shadow-lg">
+              <AlertCircle className="w-6 h-6 text-destructive-foreground" />
             </div>
             <div>
-              <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">{t("complaint")}</h1>
-              <p className="text-sm sm:text-base text-muted-foreground">{t("complaintDescription")}</p>
+              <h1 className="text-3xl font-bold tracking-tight">Réclamation</h1>
+              <p className="text-muted-foreground">Signalez une pollution non détectée</p>
             </div>
           </div>
         </div>
@@ -112,17 +110,19 @@ export default function ComplaintPage() {
                 <div className="w-8 h-8 bg-destructive/10 rounded-lg flex items-center justify-center">
                   <Send className="w-4 h-4 text-destructive" />
                 </div>
-                <CardTitle className="text-xl">{t("complaintFormTitle")}</CardTitle>
+                <CardTitle className="text-xl">Formulaire de réclamation</CardTitle>
               </div>
-              <CardDescription>{t("complaintFormDescription")}</CardDescription>
+              <CardDescription>
+                Remplissez les informations ci-dessous pour signaler une pollution non détectée
+              </CardDescription>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Location */}
                 <div className="space-y-2">
                   <Label htmlFor="location" className="text-sm font-medium flex items-center gap-2">
                     <MapPin className="w-4 h-4 text-primary" />
-                    {t("location")}
+                    Lieu de la pollution
                   </Label>
                   <Input
                     id="location"
@@ -133,15 +133,15 @@ export default function ComplaintPage() {
                     required
                     className="h-11"
                   />
-                  <p className="text-xs text-muted-foreground">{t("locationPrecision")}</p>
+                  <p className="text-xs text-muted-foreground">Soyez aussi précis que possible</p>
                 </div>
 
                 {/* Date and Time */}
-                <div className="grid gap-4 sm:gap-5 grid-cols-1 sm:grid-cols-2">
+                <div className="grid gap-5 sm:grid-cols-2">
                   <div className="space-y-2">
                     <Label htmlFor="date" className="text-sm font-medium flex items-center gap-2">
                       <Calendar className="w-4 h-4 text-primary" />
-                      {t("date")}
+                      Date exacte
                     </Label>
                     <Input
                       id="date"
@@ -157,7 +157,7 @@ export default function ComplaintPage() {
                   <div className="space-y-2">
                     <Label htmlFor="time" className="text-sm font-medium flex items-center gap-2">
                       <Clock className="w-4 h-4 text-primary" />
-                      {t("time")}
+                      Horaire exact
                     </Label>
                     <Input
                       id="time"
@@ -174,21 +174,25 @@ export default function ComplaintPage() {
                 <div className="space-y-2">
                   <Label htmlFor="description" className="text-sm font-medium flex items-center gap-2">
                     <AlertCircle className="w-4 h-4 text-primary" />
-                    {t("description")}
+                    Description (optionnelle)
                   </Label>
                   <Textarea
                     id="description"
-                    placeholder={t("descriptionPlaceholder")}
+                    placeholder="Décrivez ce que vous avez observé : odeurs, fumée, visibilité réduite, etc."
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     className="min-h-[120px] resize-none"
                   />
-                  <p className="text-xs text-muted-foreground">{t("additionalInfo")}</p>
+                  <p className="text-xs text-muted-foreground">
+                    Toute information supplémentaire nous aide à mieux comprendre la situation
+                  </p>
                 </div>
 
                 {/* User Info Display */}
                 <div className="p-4 bg-muted/50 rounded-xl border space-y-2">
-                  <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">{t("userInfo")}</p>
+                  <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+                    Informations du déclarant
+                  </p>
                   <div className="flex items-center gap-4 text-sm">
                     <span className="font-medium">{user.name}</span>
                     {user.age && (
@@ -205,12 +209,12 @@ export default function ComplaintPage() {
                   {isLoading ? (
                     <>
                       <div className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin" />
-                      {t("submitting")}
+                      Envoi en cours...
                     </>
                   ) : (
                     <>
                       <Send className="w-5 h-5" />
-                      {t("submitComplaint")}
+                      Envoyer la réclamation
                     </>
                   )}
                 </Button>
@@ -227,8 +231,11 @@ export default function ComplaintPage() {
                   <CheckCircle2 className="w-7 h-7 text-chart-1" />
                 </div>
                 <div className="space-y-2 flex-1">
-                  <h3 className="text-2xl font-bold">{t("complaintSuccess")}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{t("complaintSuccessMessage")}</p>
+                  <h3 className="text-2xl font-bold">Réclamation envoyée avec succès</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    Merci pour votre contribution. Votre signalement a été enregistré et sera analysé par notre équipe
+                    dans les plus brefs délais.
+                  </p>
                 </div>
               </div>
             </CardHeader>
@@ -236,14 +243,14 @@ export default function ComplaintPage() {
               {/* Submission Details */}
               <div className="p-5 bg-muted/50 rounded-xl border space-y-4">
                 <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
-                  {t("submissionDetails")}
+                  Détails de votre réclamation
                 </p>
 
                 <div className="space-y-3">
                   <div className="flex items-start gap-3">
                     <MapPin className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
                     <div className="flex-1">
-                      <p className="text-xs text-muted-foreground">{t("location")}</p>
+                      <p className="text-xs text-muted-foreground">Lieu</p>
                       <p className="text-sm font-medium">{submission?.location}</p>
                     </div>
                   </div>
@@ -252,7 +259,7 @@ export default function ComplaintPage() {
                     <div className="flex items-start gap-3">
                       <Calendar className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
                       <div className="flex-1">
-                        <p className="text-xs text-muted-foreground">{t("date")}</p>
+                        <p className="text-xs text-muted-foreground">Date</p>
                         <p className="text-sm font-medium">
                           {submission?.date &&
                             new Date(submission.date).toLocaleDateString("fr-FR", {
@@ -267,7 +274,7 @@ export default function ComplaintPage() {
                     <div className="flex items-start gap-3">
                       <Clock className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
                       <div className="flex-1">
-                        <p className="text-xs text-muted-foreground">{t("time")}</p>
+                        <p className="text-xs text-muted-foreground">Horaire</p>
                         <p className="text-sm font-medium">{submission?.time}</p>
                       </div>
                     </div>
@@ -275,7 +282,7 @@ export default function ComplaintPage() {
 
                   {submission?.description && (
                     <div className="pt-3 border-t">
-                      <p className="text-xs text-muted-foreground mb-1">{t("description")}</p>
+                      <p className="text-xs text-muted-foreground mb-1">Description</p>
                       <p className="text-sm leading-relaxed">{submission.description}</p>
                     </div>
                   )}
@@ -289,12 +296,12 @@ export default function ComplaintPage() {
                     <AlertCircle className="w-4 h-4 text-primary" />
                   </div>
                   <div className="space-y-2 flex-1">
-                    <p className="text-sm font-semibold">{t("nextSteps")}</p>
+                    <p className="text-sm font-semibold">Prochaines étapes</p>
                     <ul className="text-sm text-muted-foreground space-y-1 leading-relaxed">
-                      <li>• {t("nextStep1")}</li>
-                      <li>• {t("nextStep2")}</li>
-                      <li>• {t("nextStep3")}</li>
-                      <li>• {t("nextStep4")}</li>
+                      <li>• Notre équipe analysera votre signalement dans les 24-48 heures</li>
+                      <li>• Nous vérifierons les données de nos capteurs pour cette zone et période</li>
+                      <li>• Si nécessaire, nous ajusterons nos algorithmes de détection</li>
+                      <li>• Vous recevrez une notification une fois l'analyse terminée</li>
                     </ul>
                   </div>
                 </div>

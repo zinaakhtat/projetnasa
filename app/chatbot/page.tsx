@@ -149,22 +149,24 @@ export default function ChatbotPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5">
-      <main className="container max-w-5xl mx-auto p-4 sm:p-6 space-y-4 sm:space-y-6">
+      <div className="container max-w-5xl mx-auto p-6 space-y-6">
+        {/* Header */}
         <div className="text-center space-y-2">
-          <div className="flex items-center justify-center gap-2 sm:gap-3 mb-2">
-            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-primary to-primary/60 rounded-2xl flex items-center justify-center shadow-lg">
-              <Bot className="w-5 h-5 sm:w-6 sm:h-6 text-primary-foreground" />
+          <div className="flex items-center justify-center gap-3 mb-2">
+            <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary/60 rounded-2xl flex items-center justify-center shadow-lg">
+              <Bot className="w-6 h-6 text-primary-foreground" />
             </div>
-            <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-primary animate-pulse" />
+            <Sparkles className="w-5 h-5 text-primary animate-pulse" />
           </div>
-          <h1 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
             {t("chatbotTitle")}
           </h1>
-          <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto px-4">{t("chatbotDescription")}</p>
+          <p className="text-muted-foreground max-w-2xl mx-auto">{t("chatbotDescription")}</p>
         </div>
 
+        {/* Chat Container */}
         <Card className="border-2 shadow-xl">
-          <div className="flex flex-col h-[500px] sm:h-[600px]">
+          <div className="flex flex-col h-[600px]">
             {/* Messages */}
             <div className="flex-1 overflow-y-auto p-6 space-y-4">
               {messages.map((message) => (
@@ -271,7 +273,7 @@ export default function ChatbotPage() {
             </div>
           </Card>
         )}
-      </main>
+      </div>
     </div>
   )
 }

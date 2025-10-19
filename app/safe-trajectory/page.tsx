@@ -25,7 +25,6 @@ import {
   Map,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { t } from "@/app/_trpc/i18n"
 
 interface TrajectoryResult {
   from: string
@@ -168,19 +167,21 @@ export default function SafeTrajectoryPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-secondary/10 to-background">
-      <main className="container mx-auto px-4 sm:px-6 py-6 sm:py-8 max-w-5xl space-y-4 sm:space-y-6">
-        <div className="space-y-2 sm:space-y-3">
-          <div className="flex items-center gap-2 sm:gap-3">
-            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-primary to-primary/70 rounded-xl flex items-center justify-center shadow-lg">
-              <Route className="w-5 h-5 sm:w-6 sm:h-6 text-primary-foreground" />
+      <main className="container mx-auto px-6 py-8 max-w-5xl space-y-6">
+        {/* Header Section */}
+        <div className="space-y-3">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary/70 rounded-xl flex items-center justify-center shadow-lg">
+              <Route className="w-6 h-6 text-primary-foreground" />
             </div>
             <div>
-              <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">{t("safeTrajectory")}</h1>
-              <p className="text-sm sm:text-base text-muted-foreground">{t("safeTrajectoryDescription")}</p>
+              <h1 className="text-3xl font-bold tracking-tight">Trajet Sûr</h1>
+              <p className="text-muted-foreground">Analysez la qualité de l'air sur votre itinéraire</p>
             </div>
           </div>
         </div>
 
+        {/* Search Form */}
         <Card className="shadow-xl border-primary/10 overflow-hidden">
           <div className="h-1.5 bg-gradient-to-r from-primary via-accent to-primary" />
           <CardHeader className="space-y-1">
@@ -195,8 +196,8 @@ export default function SafeTrajectoryPage() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
-              <div className="grid gap-4 sm:gap-5 grid-cols-1 sm:grid-cols-2">
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="grid gap-5 sm:grid-cols-2">
                 <div className="space-y-2">
                   <Label htmlFor="from" className="text-sm font-medium flex items-center gap-2">
                     <MapPin className="w-4 h-4 text-primary" />
@@ -418,7 +419,7 @@ export default function SafeTrajectoryPage() {
                 </div>
 
                 {/* Route Details Summary */}
-                <div className="grid gap-4 sm:gap-5 grid-cols-1 sm:grid-cols-2">
+                <div className="grid gap-4 sm:grid-cols-2">
                   <div className="p-4 bg-muted/50 rounded-xl border space-y-1">
                     <div className="flex items-center gap-2 text-muted-foreground">
                       <Route className="w-4 h-4" />
@@ -536,6 +537,7 @@ export default function SafeTrajectoryPage() {
               </CardContent>
             </Card>
 
+            {/* Visual Trajectory Flow */}
             <Card className="shadow-xl border-primary/10">
               <CardHeader>
                 <div className="flex items-center gap-2">
@@ -547,137 +549,133 @@ export default function SafeTrajectoryPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="overflow-x-auto">
-                  <div className="min-w-[600px] sm:min-w-0">
-                    <div className="relative bg-gradient-to-br from-muted/30 to-muted/10 rounded-xl p-8 border-2 border-dashed border-border min-h-[350px]">
-                      {/* Flow-based route visualization */}
-                      <div className="relative h-full">
-                        {/* Connecting flow lines */}
-                        <svg className="absolute inset-0 w-full h-full" style={{ zIndex: 0 }}>
-                          {result.routeDetails.checkpoints.map((_, index) => {
-                            if (index === result.routeDetails.checkpoints.length - 1) return null
-                            const startX = (index / (result.routeDetails.checkpoints.length - 1)) * 100
-                            const endX = ((index + 1) / (result.routeDetails.checkpoints.length - 1)) * 100
-                            const checkpoint = result.routeDetails.checkpoints[index]
-                            return (
-                              <line
-                                key={index}
-                                x1={`${startX}%`}
-                                y1="50%"
-                                x2={`${endX}%`}
-                                y2="50%"
-                                stroke={
-                                  checkpoint.status === "safe"
-                                    ? "#10b981"
-                                    : checkpoint.status === "moderate"
-                                      ? "#f59e0b"
-                                      : "#ef4444"
-                                }
-                                strokeWidth="3"
-                                strokeDasharray="8,4"
-                                opacity="0.4"
-                              />
-                            )
-                          })}
-                        </svg>
+                <div className="relative bg-gradient-to-br from-muted/30 to-muted/10 rounded-xl p-8 border-2 border-dashed border-border min-h-[350px]">
+                  {/* Flow-based route visualization */}
+                  <div className="relative h-full">
+                    {/* Connecting flow lines */}
+                    <svg className="absolute inset-0 w-full h-full" style={{ zIndex: 0 }}>
+                      {result.routeDetails.checkpoints.map((_, index) => {
+                        if (index === result.routeDetails.checkpoints.length - 1) return null
+                        const startX = (index / (result.routeDetails.checkpoints.length - 1)) * 100
+                        const endX = ((index + 1) / (result.routeDetails.checkpoints.length - 1)) * 100
+                        const checkpoint = result.routeDetails.checkpoints[index]
+                        return (
+                          <line
+                            key={index}
+                            x1={`${startX}%`}
+                            y1="50%"
+                            x2={`${endX}%`}
+                            y2="50%"
+                            stroke={
+                              checkpoint.status === "safe"
+                                ? "#10b981"
+                                : checkpoint.status === "moderate"
+                                  ? "#f59e0b"
+                                  : "#ef4444"
+                            }
+                            strokeWidth="3"
+                            strokeDasharray="8,4"
+                            opacity="0.4"
+                          />
+                        )
+                      })}
+                    </svg>
 
-                        {/* Checkpoint nodes */}
-                        <div className="relative flex items-center justify-between h-full" style={{ zIndex: 1 }}>
-                          {result.routeDetails.checkpoints.map((checkpoint, index) => (
-                            <div key={index} className="flex flex-col items-center gap-4 flex-1">
-                              {/* Flow node */}
-                              <div className="relative">
-                                <div
-                                  className={cn(
-                                    "w-20 h-20 rounded-full flex flex-col items-center justify-center font-bold shadow-2xl border-4 border-background transition-all hover:scale-110",
-                                    checkpoint.status === "safe" && "bg-gradient-to-br from-chart-1 to-chart-1/80",
-                                    checkpoint.status === "moderate" && "bg-gradient-to-br from-chart-2 to-chart-2/80",
-                                    checkpoint.status === "unsafe" && "bg-gradient-to-br from-chart-4 to-chart-4/80",
-                                  )}
-                                >
-                                  {index === 0 ? (
-                                    <MapPin className="w-8 h-8 text-primary-foreground" />
-                                  ) : index === result.routeDetails.checkpoints.length - 1 ? (
-                                    <MapPin className="w-8 h-8 text-primary-foreground" />
-                                  ) : (
-                                    <span className="text-2xl text-primary-foreground">{index}</span>
-                                  )}
-                                </div>
-                                {/* Animated pulse effect */}
-                                <div
-                                  className={cn(
-                                    "absolute inset-0 rounded-full animate-ping opacity-20",
-                                    checkpoint.status === "safe" && "bg-chart-1",
-                                    checkpoint.status === "moderate" && "bg-chart-2",
-                                    checkpoint.status === "unsafe" && "bg-chart-4",
-                                  )}
-                                />
-                                {/* AQI badge */}
-                                <Badge
-                                  className={cn(
-                                    "absolute -bottom-3 left-1/2 -translate-x-1/2 font-mono text-sm px-3 py-1 shadow-lg",
-                                    checkpoint.status === "safe" && "bg-chart-1 text-primary-foreground",
-                                    checkpoint.status === "moderate" && "bg-chart-2 text-primary-foreground",
-                                    checkpoint.status === "unsafe" && "bg-chart-4 text-primary-foreground",
-                                  )}
-                                >
-                                  {checkpoint.aqi}
-                                </Badge>
-                              </div>
-
-                              {/* Location info */}
-                              <div className="text-center space-y-2 mt-6">
-                                <p className="text-sm font-bold text-balance max-w-[140px]">{checkpoint.location}</p>
-                                <Badge
-                                  variant="outline"
-                                  className={cn(
-                                    "text-xs",
-                                    checkpoint.status === "safe" && "border-chart-1 text-chart-1",
-                                    checkpoint.status === "moderate" && "border-chart-2 text-chart-2",
-                                    checkpoint.status === "unsafe" && "border-chart-4 text-chart-4",
-                                  )}
-                                >
-                                  {checkpoint.status === "safe" && "Bon"}
-                                  {checkpoint.status === "moderate" && "Modéré"}
-                                  {checkpoint.status === "unsafe" && "Mauvais"}
-                                </Badge>
-                              </div>
-
-                              {/* Flow arrow */}
-                              {index < result.routeDetails.checkpoints.length - 1 && (
-                                <ArrowRight
-                                  className={cn(
-                                    "absolute left-[calc(50%+3rem)] top-1/2 -translate-y-1/2 w-6 h-6 opacity-40",
-                                    checkpoint.status === "safe" && "text-chart-1",
-                                    checkpoint.status === "moderate" && "text-chart-2",
-                                    checkpoint.status === "unsafe" && "text-chart-4",
-                                  )}
-                                />
+                    {/* Checkpoint nodes */}
+                    <div className="relative flex items-center justify-between h-full" style={{ zIndex: 1 }}>
+                      {result.routeDetails.checkpoints.map((checkpoint, index) => (
+                        <div key={index} className="flex flex-col items-center gap-4 flex-1">
+                          {/* Flow node */}
+                          <div className="relative">
+                            <div
+                              className={cn(
+                                "w-20 h-20 rounded-full flex flex-col items-center justify-center font-bold shadow-2xl border-4 border-background transition-all hover:scale-110",
+                                checkpoint.status === "safe" && "bg-gradient-to-br from-chart-1 to-chart-1/80",
+                                checkpoint.status === "moderate" && "bg-gradient-to-br from-chart-2 to-chart-2/80",
+                                checkpoint.status === "unsafe" && "bg-gradient-to-br from-chart-4 to-chart-4/80",
+                              )}
+                            >
+                              {index === 0 ? (
+                                <MapPin className="w-8 h-8 text-primary-foreground" />
+                              ) : index === result.routeDetails.checkpoints.length - 1 ? (
+                                <MapPin className="w-8 h-8 text-primary-foreground" />
+                              ) : (
+                                <span className="text-2xl text-primary-foreground">{index}</span>
                               )}
                             </div>
-                          ))}
-                        </div>
-                      </div>
+                            {/* Animated pulse effect */}
+                            <div
+                              className={cn(
+                                "absolute inset-0 rounded-full animate-ping opacity-20",
+                                checkpoint.status === "safe" && "bg-chart-1",
+                                checkpoint.status === "moderate" && "bg-chart-2",
+                                checkpoint.status === "unsafe" && "bg-chart-4",
+                              )}
+                            />
+                            {/* AQI badge */}
+                            <Badge
+                              className={cn(
+                                "absolute -bottom-3 left-1/2 -translate-x-1/2 font-mono text-sm px-3 py-1 shadow-lg",
+                                checkpoint.status === "safe" && "bg-chart-1 text-primary-foreground",
+                                checkpoint.status === "moderate" && "bg-chart-2 text-primary-foreground",
+                                checkpoint.status === "unsafe" && "bg-chart-4 text-primary-foreground",
+                              )}
+                            >
+                              {checkpoint.aqi}
+                            </Badge>
+                          </div>
 
-                      {/* Legend */}
-                      <div className="mt-8 pt-6 border-t flex items-center justify-center gap-6 flex-wrap">
-                        <div className="flex items-center gap-2">
-                          <div className="w-4 h-4 rounded-full bg-chart-1 shadow-sm" />
-                          <span className="text-xs text-muted-foreground">Bon (0-50)</span>
+                          {/* Location info */}
+                          <div className="text-center space-y-2 mt-6">
+                            <p className="text-sm font-bold text-balance max-w-[140px]">{checkpoint.location}</p>
+                            <Badge
+                              variant="outline"
+                              className={cn(
+                                "text-xs",
+                                checkpoint.status === "safe" && "border-chart-1 text-chart-1",
+                                checkpoint.status === "moderate" && "border-chart-2 text-chart-2",
+                                checkpoint.status === "unsafe" && "border-chart-4 text-chart-4",
+                              )}
+                            >
+                              {checkpoint.status === "safe" && "Bon"}
+                              {checkpoint.status === "moderate" && "Modéré"}
+                              {checkpoint.status === "unsafe" && "Mauvais"}
+                            </Badge>
+                          </div>
+
+                          {/* Flow arrow */}
+                          {index < result.routeDetails.checkpoints.length - 1 && (
+                            <ArrowRight
+                              className={cn(
+                                "absolute left-[calc(50%+3rem)] top-1/2 -translate-y-1/2 w-6 h-6 opacity-40",
+                                checkpoint.status === "safe" && "text-chart-1",
+                                checkpoint.status === "moderate" && "text-chart-2",
+                                checkpoint.status === "unsafe" && "text-chart-4",
+                              )}
+                            />
+                          )}
                         </div>
-                        <div className="flex items-center gap-2">
-                          <div className="w-4 h-4 rounded-full bg-chart-2 shadow-sm" />
-                          <span className="text-xs text-muted-foreground">Modéré (51-100)</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <div className="w-4 h-4 rounded-full bg-chart-3 shadow-sm" />
-                          <span className="text-xs text-muted-foreground">Sensible (101-150)</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <div className="w-4 h-4 rounded-full bg-chart-4 shadow-sm" />
-                          <span className="text-xs text-muted-foreground">Mauvais (151+)</span>
-                        </div>
-                      </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Legend */}
+                  <div className="mt-8 pt-6 border-t flex items-center justify-center gap-6 flex-wrap">
+                    <div className="flex items-center gap-2">
+                      <div className="w-4 h-4 rounded-full bg-chart-1 shadow-sm" />
+                      <span className="text-xs text-muted-foreground">Bon (0-50)</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-4 h-4 rounded-full bg-chart-2 shadow-sm" />
+                      <span className="text-xs text-muted-foreground">Modéré (51-100)</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-4 h-4 rounded-full bg-chart-3 shadow-sm" />
+                      <span className="text-xs text-muted-foreground">Sensible (101-150)</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-4 h-4 rounded-full bg-chart-4 shadow-sm" />
+                      <span className="text-xs text-muted-foreground">Mauvais (151+)</span>
                     </div>
                   </div>
                 </div>

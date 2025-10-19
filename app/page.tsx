@@ -1,7 +1,7 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Shield, Bell, TrendingUp } from "lucide-react";
-import Image from "next/image";
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { Shield, Bell, TrendingUp } from "lucide-react"
+import Image from "next/image"
 
 export default function LandingPage() {
   return (
@@ -11,22 +11,20 @@ export default function LandingPage() {
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
       </div>
 
-      <div className="max-w-lg w-full space-y-4 text-center relative z-10">
-        <div className="flex flex-col items-center gap-3">
+      <div className="max-w-lg w-full space-y-12 text-center relative z-10">
+        <div className="flex flex-col items-center gap-6">
           <div className="relative">
             <Image
-              src="/logo.png"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-S2COqwFKawKRv1DRqURRh8VzVn9Uiq.png"
               alt="Respera Logo"
-              width={270}
-              height={90}
+              width={280}
+              height={100}
               className="object-contain"
               priority
             />
           </div>
-          <div className="space-y-2">
-            <p className="text-xl text-muted-foreground font-medium">
-              Surveillance de la qualité de l'air au Maroc
-            </p>
+          <div className="space-y-3">
+            <p className="text-xl text-muted-foreground font-medium">Surveillance de la qualité de l'air au Maroc</p>
           </div>
         </div>
 
@@ -47,15 +45,11 @@ export default function LandingPage() {
 
         <div className="space-y-4">
           <p className="text-muted-foreground leading-relaxed text-lg">
-            Protégez votre santé avec des alertes personnalisées et des données
-            en temps réel sur la qualité de l'air
+            Protégez votre santé avec des alertes personnalisées et des données en temps réel sur la qualité de l'air
           </p>
 
           <Link href="/auth" className="block">
-            <Button
-              size="lg"
-              className="w-full h-14 text-lg shadow-2xl hover:shadow-primary/25 transition-all"
-            >
+            <Button size="lg" className="w-full h-14 text-lg shadow-2xl hover:shadow-primary/25 transition-all">
               Se connecter
             </Button>
           </Link>
@@ -71,5 +65,5 @@ export default function LandingPage() {
         </div>
       </div>
     </div>
-  );
+  )
 }
