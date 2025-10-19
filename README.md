@@ -2,7 +2,7 @@
 
 <p align="center">
   <img src="public/logo.png" alt="Respera Logo" width="180" style="margin-right: 30px;"/>
-  <img src="screenshots/nasa.png" alt="Nasa Logo" width="180"/>
+  <img src="docs/screenshots/nasa.png" alt="Nasa Logo" width="180"/>
 </p>
 
 ## 🌍 À propos
@@ -29,31 +29,31 @@ Elle fournit des **données en temps réel**, des **prévisions personnalisées*
 ### Dashboard
 
 <p align="center">
-  <img src="screenshots/dashboard.png" alt="Dashboard Screenshot" width="600"/>
+  <img src="docs/screenshots/dashboard.png" alt="Dashboard Screenshot" width="600"/>
 </p>
 
 ### Previsions
 
 <p align="center">
-  <img src="screenshots/prevesion2.png" alt="Dashboard Screenshot" width="600"/>
+  <img src="docs/screenshots/prevesion2.png" alt="Dashboard Screenshot" width="600"/>
 </p>
 
 ### Trajet
 
 <p align="center">
-  <img src="screenshots/trajet.png" alt="Dashboard Screenshot" width="600"/>
+  <img src="docs/screenshots/trajet.png" alt="Dashboard Screenshot" width="600"/>
 </p>
 
 ### Reclamation
 
 <p align="center">
-  <img src="screenshots/reclamation.png" alt="Dashboard Screenshot" width="600"/>
+  <img src="docs/screenshots/reclamation.png" alt="Dashboard Screenshot" width="600"/>
 </p>
 
 ### Chatbot
 
 <p align="center">
-  <img src="screenshots/chatbot.png" alt="Dashboard Screenshot" width="600"/>
+  <img src="docs/screenshots/chatbot.png" alt="Dashboard Screenshot" width="600"/>
 </p>
 <br/>
 
