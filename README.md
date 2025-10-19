@@ -69,8 +69,8 @@ Elle fournit des **données en temps réel**, des **prévisions personnalisées*
 ### 1. Cloner le repository
 
 ```bash
-git clone <repository-url>
-cd respera
+git clone https://github.com/zinaakhtat/projetnasa.git
+cd projetnasa
 npm install
 npm run dev
 ```
