@@ -107,7 +107,7 @@ git commit -m "Add AmazingFeature"
 ## 📄 Licence
 
 This project is licensed under the MIT License.
-See the LICENSE file for more details.
+See the [LICENCE](licence) file for more details.
 
 <br/>
 
